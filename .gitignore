@@ -1,0 +1,4 @@
+ignoredFile.whatever
+ignoredDirectory/*
+directory/ignoredFileInsideDirectory
+.bak
