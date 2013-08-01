@@ -1,0 +1,7 @@
+(define(same-parity . w)
+  (define(helper ori dst)
+    (cond((null? ori) dst)
+         ((null? dst) (helper (cdr ori) (list(car ori))))
+         ((=(remainder (car ori) 2)(remainder (car dst) 2))(helper (cdr ori) (append dst (list(car ori)))))
+         (else (helper (cdr ori) dst))))
+  (helper w nil)) 
