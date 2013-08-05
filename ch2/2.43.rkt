@@ -1,0 +1,1 @@
+;Louis's program is slow because it recalculate 'rest-of-queues' for each 'new-row', while the original one only calculate once. So the time would be T * board-size

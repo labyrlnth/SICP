@@ -2,7 +2,7 @@
   (if (= n 1)(list n)
       (cons n (enumerate-reverse (- n 1)))))
 
-;define a procedure that return all pair sum to n and (car n) than m
+;define a procedure that return all pair sum to n and (car n) less than m
 (define (make-pair n m)
   (define (helper n i m)
     (if (> i (- n i))
