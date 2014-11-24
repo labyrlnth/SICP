@@ -1,4 +1,4 @@
-(load "../commons/test-utils.rkt")
+#lang racket
 
 (define rand
   (let ((x 0))
@@ -21,5 +21,5 @@
 ((rand 'reset) 0)
 (define result3 (generate-numbers 10))
 
-(assert (equal? result1 result3) "result1 equals to result2")
-(assert (not (equal? result1 result2)) "result1 does not equal to result2")
+(equal? result1 result3);#t
+(equal? result1 result2);#f

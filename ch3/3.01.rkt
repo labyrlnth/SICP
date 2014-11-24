@@ -1,3 +1,4 @@
+#lang racket
 (define (accumulator base)
   (lambda(x)
     (begin (set! base (+ base x))

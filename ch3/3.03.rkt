@@ -1,4 +1,4 @@
-(load "../commons/test-utils.rkt")
+#lang racket
 
 (define (make-account balance password)
   
@@ -40,8 +40,8 @@
   (if (< try 10)
     (begin
       ((acc 'wrong-passwd 'withdraw) 10)
-      (loop (inc try)))
+      (loop (+ try 1)))
     'done))
 
-(assert (eq? ((acc 'secret-password 'withdraw) 10) 90))
-(assert (eq? ((acc 'secret-password 'deposit) 100) 190))
+((acc 'secret-password 'withdraw) 10);90
+((acc 'secret-password 'deposit) 100);90

@@ -1,3 +1,4 @@
+#lang racket
 (define (make-monitored proc)
   (define count 0)
   (lambda(x)

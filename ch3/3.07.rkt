@@ -1,4 +1,4 @@
-(load "../commons/test-utils.rkt")
+#lang racket
 
 (define (obj-holder balance)
   (define (dispatch op amount)
@@ -15,7 +15,8 @@
 (define (make-account balance password)
   
   (if (number? balance)
-        (set! balance (obj-holder balance)))
+        (set! balance (obj-holder balance))
+        (set! balance balance))
   
   ;local variable
   (define error-count 0)
@@ -55,13 +56,20 @@
 (define alice-acc (make-account 100 'alice-pw))
 (define bob-acc (make-joint alice-acc 'alice-pw 'bob-pw))
 
-(assert (eq? ((alice-acc 'alice-pw 'deposit) 10) 110))
-(assert (eq? ((bob-acc 'bob-pw 'deposit) 10) 120))
-(assert (eq? ((alice-acc 'alice-pw 'withdraw) 20) 100))
-(assert (eq? ((bob-acc 'bob-pw 'withdraw) 20) 80))
+((alice-acc 'alice-pw 'deposit) 10)
+;110
 
-(assert (eq? ((alice-acc 'bob-pw 'withdraw) 20) "Incorrect password"))
-(assert (eq? ((bob-acc 'alice-pw 'withdraw) 20) "Incorrect password"))
+((bob-acc 'bob-pw 'deposit) 10)
+;120
+
+((alice-acc 'alice-pw 'withdraw) 20)
+;100
+
+((bob-acc 'bob-pw 'withdraw) 20)
+;80
+
+((alice-acc 'bob-pw 'withdraw) 20);"Incorrect password"
+((bob-acc 'alice-pw 'withdraw) 20);"Incorrect password"
 
 
 
